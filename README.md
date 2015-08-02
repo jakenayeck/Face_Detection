@@ -1,2 +1,4 @@
 # Face_Detection
-Face Detection using Haar Cascades
+This is a project to explore how to detect faces using Haar Cascades. 
+Technolgies: OpenCV, Python
+
