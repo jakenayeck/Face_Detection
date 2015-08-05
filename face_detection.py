@@ -13,14 +13,17 @@ def get_frames(webcam):
     gray       = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     return frame, gray
 
-def draw_rectangle_over_faces(img, faces):
+def draw_rectangle_over_faces(img, faces, text):
+    
     for (x,y,w,h) in faces:
         cv2.rectangle(img, (x,y), (x+w, y+h), (0,0,255), 2)
-    cv2.imshow('frame', color_image)
+        cv2.putText(img, text, (x,y), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (0,255,0))
+    cv2.imshow('frame', img)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         webcam.release()
         cv2.destroyAllWindows()
         sys.exit()
+
 def create_face_learner():
     PATH_FACE = 'haarcascade/haarcascade_frontalface_default.xml'
     face_learner = cv2.CascadeClassifier(PATH_FACE)
@@ -39,5 +42,5 @@ face_learner = create_face_learner()
 while True:
     color_image, gray_image = get_frames(webcam)
     faces = find_faces(gray_image)
-    draw_rectangle_over_faces(color_image, faces)
+    draw_rectangle_over_faces(color_image, faces, text="found human")
 
