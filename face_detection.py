@@ -17,7 +17,7 @@ def draw_rectangle_over_faces(img, faces, text):
     
     for (x,y,w,h) in faces:
         cv2.rectangle(img, (x,y), (x+w, y+h), (0,0,255), 2)
-        cv2.putText(img, text, (x,y), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (0,255,0))
+        cv2.putText(img, text, (x,y), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0,255,0))
     cv2.imshow('frame', img)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         webcam.release()
@@ -30,7 +30,8 @@ def create_face_learner():
     return face_learner
 
 def find_faces(gray_image):
-    faces = face_learner.detectMultiScale(gray_image, scaleFactor = 1.1, minNeighbors=2, minSize= (30,30) )
+    alpha = 1.2
+    faces = face_learner.detectMultiScale(gray_image, scaleFactor = alpha, minNeighbors=2, minSize= (30,30) )
     return faces
 
 ################
