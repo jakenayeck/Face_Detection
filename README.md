@@ -3,7 +3,7 @@ This is a project to explore how to detect faces using Haar Cascades.
 * To run: 
  * `python face_detection.py`
 * To quit:
- * Press q.
+ * Press q
 
 
 ##Technolgies: 
