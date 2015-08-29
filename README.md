@@ -6,6 +6,7 @@ This is a project to explore how to detect faces using Haar Cascades.
 * Python
 
 ##Installation Guide:
-* OpenCV:
-`brew tap homebrew/science`
+* OpenCV (for mac):
+..* `brew tap homebrew/science`
+..* `brew install opencv`
 
