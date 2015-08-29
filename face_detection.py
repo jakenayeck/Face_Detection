@@ -14,11 +14,12 @@ def get_frames(webcam):
     return frame, gray
 
 def draw_rectangle_over_faces(img, faces, text):
-    
     for (x,y,w,h) in faces:
         cv2.rectangle(img, (x,y), (x+w, y+h), (0,0,255), 2)
         cv2.putText(img, text, (x,y), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0,255,0))
     cv2.imshow('frame', img)
+    
+    #Press q to quit
     if cv2.waitKey(1) & 0xFF == ord('q'):
         webcam.release()
         cv2.destroyAllWindows()
@@ -29,8 +30,7 @@ def create_face_learner():
     face_learner = cv2.CascadeClassifier(PATH_FACE)
     return face_learner
 
-def find_faces(gray_image):
-    alpha = 1.2
+def find_faces(gray_image, alpha = 1.2):
     faces = face_learner.detectMultiScale(gray_image, scaleFactor = alpha, minNeighbors=2, minSize= (30,30) )
     return faces
 
